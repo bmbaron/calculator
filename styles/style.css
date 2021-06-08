@@ -1,0 +1,111 @@
+.container {
+  width:100%;
+  padding-top:2%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.piano-container {
+  display:flex;
+  justify-content:center;
+  width:600px;
+  height:10px;
+}
+
+.display {
+  position:absolute;
+  width: 400px;
+  height:100px;
+  background-color:lightgrey;
+  border: 2px black solid;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#display {
+  font-size: 40px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.small-font {
+  
+  font-size: 30px !important;
+  
+}
+
+.smaller-font {
+  
+  font-size: 20px !important;
+  
+}
+
+.numbers-container {
+  margin-top:100px;
+  width:550px;
+  height:10px;
+  display:flex;
+  justify-content:center;
+}
+
+.number {
+  margin-top:15px;
+  width: 9.5%;
+  height: 220px;
+  background-color: white;
+  float:left;
+}
+
+.operators-container {
+  position:absolute;
+  margin-top:115px;
+  width:550px;
+  height:10px;;
+  display:flex;
+  justify-content:left;
+  padding-left:60px;
+}
+
+.operator {
+  margin-top: 0px;
+  width:8%;
+  height:150px;
+  background-color:black;
+  margin-right:6px;
+}
+
+
+.hidden {
+  visibility:hidden;
+}
+
+.inactive {
+  pointer-events: none !important;
+}
+
+kbd {
+  display: block;
+  margin-top:150px;
+  font-size: 2rem;
+}
+
+.onRed {
+  color:white;
+  margin-top:80px;
+}
+.small {
+  font-size: 0.5rem;
+  color: red;
+}
+
+p {
+  position: fixed;
+  left:55%;
+  top: 65%;
+}
+
