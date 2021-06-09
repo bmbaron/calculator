@@ -5,7 +5,7 @@ let mainContainer = document.getElementById('main-container');
 
     let show = document.createElement('h1');
 
-    show.textContent = "click on the keys to do math";
+    show.textContent = '';
     show.id = 'display-text';
     display.appendChild(show);
     
@@ -39,8 +39,8 @@ let saveShow = '';
     numberKeysContainer.appendChild(numberButton);
     
     numberButton.onclick = function(){
-      handleNumber(this.id);
       playWhite(this.id);
+      handleNumber(this.id);
     };
 
     let kbd = document.createElement('kbd');
@@ -105,7 +105,10 @@ let saveShow = '';
     
     operatorKeysContainer.appendChild(operatorButton);
     
-    operatorButton.onclick = function(){handleOperator(this.id)};
+    operatorButton.onclick = function(){
+      playBlack(this.id);
+      handleOperator(this.id);
+    };
 
     let kbd = document.createElement('kbd');
     kbd.classList.add('on-black');
@@ -207,6 +210,35 @@ let saveShow = '';
   
   function playWhite (id) {
     
-    let audio = new Audio('sounds/' + id + '.flac');
+    if (id == '.') {
+      let audio = new Audio('sounds/10.flac');
+      audio.play();
+    }
+    else {
+      let audio = new Audio('sounds/' + id + '.flac');
+      audio.play();
+    }
+  }
+  
+  function playBlack (id) {
+    
+    if (id == 'a') {
+      let audio = new Audio('sounds/8a.flac');
+      audio.play();
+    }
+    else if (id == 'b') {
+      let audio = new Audio('sounds/9a.flac');
+      audio.play();
+    }
+    else if (id == 'c') {
+      let audio = new Audio('sounds/10a.flac');
+      audio.play();
+    }
+    else {
+      
+    let num = operatorArray.indexOf(id) + 1;
+    let audio = new Audio('sounds/' + num + 'a.flac');
     audio.play();
+    }
+    
   }
