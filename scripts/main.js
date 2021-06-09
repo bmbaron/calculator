@@ -8,8 +8,6 @@ let mainContainer = document.getElementById('main-container');
     show.textContent = "click on the keys to do math";
     show.id = 'display-text';
     display.appendChild(show);
-    show.classList.add('small-font');
-
     
   mainContainer.appendChild(display);
   
@@ -20,18 +18,12 @@ let numberKeysContainer = document.getElementById('number-keys-container');
 //variables to use with number input
 let num1 = '';
 let num2 = '';
+let result = '';
 let op = '';
 let haveOp = false;
-let screenSave = '';
+let saveShow = '';
 
 
-setTimeout(loadAfterTime, 2000);
-
-
-function loadAfterTime () {
-  
-show.textContent = '';
-show.classList.remove('small-font');
 
 
   for (let i=0; i<11; i++) {
@@ -46,7 +38,10 @@ show.classList.remove('small-font');
     
     numberKeysContainer.appendChild(numberButton);
     
-    numberButton.onclick = function(){handleNumber(this.id)};
+    numberButton.onclick = function(){
+      handleNumber(this.id);
+      playWhite(this.id);
+    };
 
     let kbd = document.createElement('kbd');
     kbd.innerHTML = i;
@@ -61,20 +56,31 @@ show.classList.remove('small-font');
   
   function handleNumber(id) {
     
-    if (haveOp == false) {
+    if (!haveOp) {
       num1 += id;
       show.textContent += id;
+      console.log("making num1: " + num1);
+
     }
     
     else {
       num2 += id;
-      show.textContent += id;
+      show.textContent = saveShow;
+      show.textContent += num2;
 
-      console.log(num2);
+      console.log("making num2: " + num2);
       doMath();
+      
     }
     
-    
+    if (show.textContent.length > 20) {
+      show.classList.add('small-font');
+    }
+    if (show.textContent.length > 40) {
+      show.classList.add('smaller-font');
+    }
+
+
   }
   
   
@@ -113,34 +119,53 @@ show.classList.remove('small-font');
     
     op = operator;
     
-    haveOp = true;
-    
     if(operator == 'clr') {
       clearScreen();
       return;
     }
     
-    console.log('operator clicked');
+    if (haveOp) {
+      num1 = result;
+      console.log("num1 = num2: " + result);
+      num2 = '';
+      console.log("making 2nd op: " + op);
+      show.textContent += operator;
+      saveShow = show.textContent;
+
+      return;
+    }
+    
+    haveOp = true;
+    
+    
+    console.log("making 1st op: " + op);
     
     show.textContent += operator;
     
+    saveShow = show.textContent;
     
+    if (show.textContent.length > 20) {
+      show.classList.add('small-font');
+    }
+    if (show.textContent.length > 40) {
+      show.classList.add('smaller-font');
+    }
   }
   
   
   function doMath() {
     
-    console.log('math');
+    let a = Math.round(num1 * 100) / 100;
+    let b = Math.round(num2 * 100) / 100;
     
-    let a = parseInt(num1);
-    let b = parseInt(num2);
-    console.log(a, b);
+    console.log("using a= " + a, "and b= " + b);
     let c = '';
     
     switch (op) {
       
       case '+':
         c = a+b;
+        console.log("c: " + c, "a+b: " + (a+b));
         break;
       case '-':
         c = a-b;
@@ -153,23 +178,35 @@ show.classList.remove('small-font');
         break;
     }
     
-    console.log('result: ' + '=' + c);
-      
+    result = Math.round(c * 100) / 100;
     
+    show.textContent += '=' + result;
+    console.log("the answer is " + result);
     
-    show.textContent += '=' + c;
-    
-    
+    if (show.textContent.length > 20) {
+      show.classList.add('small-font');
+    }
+    if (show.textContent.length > 40) {
+      show.classList.add('smaller-font');
+    }
   }
   
   function clearScreen () {
     
     show.textContent = '';
+    saveShow = '';
     num1 = '';
     num2 = '';
     op = '';
     haveOp = false;
     
+    show.classList.remove('small-font', 'smaller-font');
+    
   }
-
-}
+  
+  
+  function playWhite (id) {
+    
+    let audio = new Audio('sounds/' + id + '.flac');
+    audio.play();
+  }

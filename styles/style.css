@@ -33,17 +33,6 @@
   word-wrap: break-word;
 }
 
-.small-font {
-  
-  font-size: 30px !important;
-  
-}
-
-.smaller-font {
-  
-  font-size: 20px !important;
-  
-}
 
 .number-keys-container {
   margin-top:100px;
@@ -109,3 +98,14 @@ p {
   top: 65%;
 }
 
+.small-font {
+  
+  font-size: 30px !important;
+  
+}
+
+.smaller-font {
+  
+  font-size: 20px !important;
+  
+}
