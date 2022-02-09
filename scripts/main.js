@@ -59,7 +59,6 @@ let saveShow = '';
     if (!haveOp) {
       num1 += id;
       show.textContent += id;
-      console.log("making num1: " + num1);
 
     }
     
@@ -68,7 +67,6 @@ let saveShow = '';
       show.textContent = saveShow;
       show.textContent += num2;
 
-      console.log("making num2: " + num2);
       doMath();
       
     }
@@ -129,9 +127,7 @@ let saveShow = '';
     
     if (haveOp) {
       num1 = result;
-      console.log("num1 = num2: " + result);
       num2 = '';
-      console.log("making 2nd op: " + op);
       show.textContent += operator;
       saveShow = show.textContent;
 
@@ -140,9 +136,7 @@ let saveShow = '';
     
     haveOp = true;
     
-    
-    console.log("making 1st op: " + op);
-    
+        
     show.textContent += operator;
     
     saveShow = show.textContent;
@@ -161,14 +155,12 @@ let saveShow = '';
     let a = Math.round(num1 * 100) / 100;
     let b = Math.round(num2 * 100) / 100;
     
-    console.log("using a= " + a, "and b= " + b);
     let c = '';
     
     switch (op) {
       
       case '+':
         c = a+b;
-        console.log("c: " + c, "a+b: " + (a+b));
         break;
       case '-':
         c = a-b;
@@ -184,7 +176,6 @@ let saveShow = '';
     result = Math.round(c * 100) / 100;
     
     show.textContent += '=' + result;
-    console.log("the answer is " + result);
     
     if (show.textContent.length > 20) {
       show.classList.add('small-font');
@@ -223,21 +214,21 @@ let saveShow = '';
   function playBlack (id) {
     
     if (id == 'a') {
-      let audio = new Audio('sounds/7#.flac');
+      let audio = new Audio('sounds/7a.flac');
       audio.play();
     }
     else if (id == 'b') {
-      let audio = new Audio('sounds/8#.flac');
+      let audio = new Audio('sounds/8a.flac');
       audio.play();
     }
     else if (id == 'c') {
-      let audio = new Audio('sounds/9#.flac');
+      let audio = new Audio('sounds/9a.flac');
       audio.play();
     }
     else {
       
     let num = operatorArray.indexOf(id);
-    let audio = new Audio('sounds/' + num + '#.flac');
+    let audio = new Audio('sounds/' + num + 'a.flac');
     audio.play();
     }
     
