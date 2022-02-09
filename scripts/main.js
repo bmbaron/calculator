@@ -223,21 +223,21 @@ let saveShow = '';
   function playBlack (id) {
     
     if (id == 'a') {
-      let audio = new Audio('sounds/8a.flac');
+      let audio = new Audio('sounds/7#.flac');
       audio.play();
     }
     else if (id == 'b') {
-      let audio = new Audio('sounds/9a.flac');
+      let audio = new Audio('sounds/8#.flac');
       audio.play();
     }
     else if (id == 'c') {
-      let audio = new Audio('sounds/10a.flac');
+      let audio = new Audio('sounds/9#.flac');
       audio.play();
     }
     else {
       
-    let num = operatorArray.indexOf(id) + 1;
-    let audio = new Audio('sounds/' + num + 'a.flac');
+    let num = operatorArray.indexOf(id);
+    let audio = new Audio('sounds/' + num + '#.flac');
     audio.play();
     }
     
