@@ -105,7 +105,9 @@ let saveShow = '';
     
     operatorButton.onclick = function(){
       playBlack(this.id);
-      handleOperator(this.id);
+      if (this.id !== 'a' && this.id !== 'b' && this.id !== 'c') {
+        handleOperator(this.id);
+      }
     };
 
     let kbd = document.createElement('kbd');
